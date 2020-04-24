@@ -1,6 +1,6 @@
 
 # The packages included in a default buster ISO by simple CDD
-SIMPLE_CDD_BASE_PACKAGES = [
+SIMPLE_CDD_DEFAULT_PACKAGES = [
     "acpid",
     "acpi",
     "adduser",

@@ -8,8 +8,11 @@
 /lib/*
 /share/*
 lib64
+
+# ignore logs, debug and images
 /ansible/scripts/ansible.log
-/simple-cdd/scripts/log.txt
+/simple-cdd/scripts/*.txt
 /simple-cdd/tmp/*
 /virtualbox/debian/buster/.vagrant/*
 /simple-cdd/images/*
+/simple-cdd/scripts/.vscode/*
