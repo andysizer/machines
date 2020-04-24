@@ -1,0 +1,15 @@
+*~
+*.retry
+*.pyc
+*.iso
+
+# ignore python3 (3.7.3) venv files
+/bin/*
+/lib/*
+/share/*
+lib64
+/ansible/scripts/ansible.log
+/simple-cdd/scripts/log.txt
+/simple-cdd/tmp/*
+/virtualbox/debian/buster/.vagrant/*
+/simple-cdd/images/*

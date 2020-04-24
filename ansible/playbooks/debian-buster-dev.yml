@@ -1,0 +1,16 @@
+- name: Provision a debian buster machine for development
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars:
+    os: debian
+    distribution: buster
+    user: andy
+    
+  roles:
+    - init_user
+#    - init_apt
+#    - default_packages
+#    - dev_tools
+
+

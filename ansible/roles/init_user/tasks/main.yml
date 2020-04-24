@@ -1,0 +1,13 @@
+# Set user
+
+- name: set up user
+  user:
+    name: "{{ user }}"
+    state: present
+
+- name: set up /etc/sudoers.d/{{ user }}.sudoers
+  template: 
+    src: sudoers
+    dest: /etc/sudoers.d/{{ user }}
+    validate: 'visudo -cf %s'
+    mode: 0440

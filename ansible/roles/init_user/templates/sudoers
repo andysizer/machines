@@ -1,0 +1,7 @@
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+
+{{ user }} ALL= (ALL) SETENV: NOPASSWD: ALL
+
+
