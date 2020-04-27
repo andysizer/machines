@@ -1,72 +1,66 @@
+#!/usr/bin/env python3
+#coding: utf-8
 
+# Simple script to get a (close) approximation of manually installed packages in the current system for use
+# by simple-cdd.
 
 import os
-from simple_cdd_base_packages import SIMPLE_CDD_DEFAULT_PACKAGES
 
 def get_packages(cmd):
     packages = set()
-    cmd = "dpkg -l | grep -e '^ii' | cut -d ' ' -f 3 | cut -d ':' -f 1 | sort | uniq -u"
     pipe = os.popen(cmd)
     lines = pipe.readlines()
     pipe.close()
 
-    for pkg in lines:
-        packages.add(pkg.strip())
+    for l in lines:
+        packages.add(l.strip())
 
     return packages
 
 def get_installed_packages():
-    cmd = "dpkg -l | grep -e '^ii' | cut -d ' ' -f 3 | cut -d ':' -f 1 | sort | uniq -u"
+    cmd = "aptitude search '?installed' | cut -d ' ' -f 3"
     return get_packages(cmd)
 
-def get_default_packages():
-    return set(SIMPLE_CDD_DEFAULT_PACKAGES)
-
-def get_dependee_packages():
-    cmd = "apt-cache dump | grep Depends: | cut -d ' ' -f 4 | sort | uniq -u"
+def get_automatic_packages():
+    cmd = "aptitude search '?automatic' | cut -d ' ' -f 3"
     return get_packages(cmd)
+
 
 def get_available_packages():
     cmd = "apt-cache dumpavail | grep Package: | cut -d ' ' -f 2"
     return get_packages(cmd)
 
-def get_root_packages(i , d):
-    root_packages = set()
-    for p in i:
-        if not p in d:
-            root_packages.add(p)
-    return root_packages   
-
 installed_packages = get_installed_packages()
-default_packages = get_default_packages()
 available_packages = get_available_packages()
-required_packages = installed_packages - default_packages
-dependee_packages = get_dependee_packages()
-root_packages = get_root_packages(required_packages, dependee_packages)
-#common_packages = installed_packages.intersection(default_packages)
-#missing = default_packages - common_packages
-missing_packages = root_packages - available_packages
-extra_packages = root_packages - missing_packages
+automatic_packages = get_automatic_packages()
+required_packages = installed_packages - automatic_packages
+missing_packages = required_packages - available_packages
+extra_packages = required_packages - missing_packages
 
 print("#")
 print("# Output from machine/simple-cdd/scripts/gep.py.")
 print("#")
-print("#installed_packages = %d" % len(installed_packages))
-print("#default_packages = %d" % len(default_packages))
-print("#required_packages = %d" % len(required_packages))
-print("#dependee_packages = %d" % len(dependee_packages))
-print("#root_packages = %d" % len(root_packages))
-#print("#common_packages = %d" % len(common_packages))
-#print("#missing = %d" % len(missing))
-print("#extra_packages = %d" % len(extra_packages))
-print("#missing_packages = %d" % len(missing_packages))
-print("##############################################\n\n")
+print("# installed_packages = %d" % len(installed_packages))
+print("# required_packages = %d" % len(required_packages))
+print("# automatic_packages = %d" % len(automatic_packages))
+print("# extra_packages = %d" % len(extra_packages))
+print("# missing_packages = %d" % len(missing_packages))
 
+print("\n############## REQUIRED ################################\n")
+for p in sorted(required_packages):
+    print("%s" % p)
+
+print("\n############## AUTOMATIC ################################\n")
+for p in sorted(automatic_packages):
+    print("%s" % p)
+
+print("\n############# EXTRAS #################################\n")
 for p in sorted(extra_packages):
     print("%s" % p)
 
-print("\n##############################################\n\n")
+print("\n################### MISSING ###########################\n")
+for m in sorted(missing_packages):
+    p = m.strip()
+    print("# %s" % m)
 
-for p in sorted(missing_packages):
-    print("#%s" % p)
 
