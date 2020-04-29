@@ -4,12 +4,6 @@
 *.pyc
 *.iso
 
-# ignore python3 (3.7.3) venv files
-/bin/*
-/lib/*
-/share/*
-lib64
-
 # ignore logs, debug and images
 /ansible/scripts/ansible.log
 /simple-cdd/scripts/*.txt
