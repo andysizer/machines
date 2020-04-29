@@ -13,12 +13,14 @@ bash
 bluez-firmware
 bsdmainutils
 bsdutils
+ca-certificates
 cantor-backend-python3
 code
 console-setup
 coreutils
 cpio
 cron
+curl
 dahdi-firmware-nonfree
 dash
 debconf
@@ -30,6 +32,7 @@ diffutils
 dmidecode
 dmsetup
 dns323-firmware-tools
+docker-ce
 dpkg
 e2fsprogs
 eject
@@ -74,6 +77,7 @@ gcc-8-base
 gdbm-l10n
 git
 git-cola
+gnupg2
 google-chrome-stable
 gpgv
 grep
@@ -495,6 +499,7 @@ sed
 sensible-utils
 sigrok-firmware-fx2lafw
 simple-cdd
+software-properties-common
 sudo
 systemd
 systemd-sysv
@@ -516,3 +521,6 @@ vim-tiny
 whiptail
 xxd
 zlib1g
+
+# we need to explicitly include include this for some reason to get perl-opensll1.1-api
+perl-openssl-defaults

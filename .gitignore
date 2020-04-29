@@ -3,12 +3,12 @@
 *.retry
 *.pyc
 *.iso
+*.log
 
-# ignore logs, debug and images
-/ansible/scripts/ansible.log
 /simple-cdd/scripts/*.txt
 /simple-cdd/tmp/*
 /virtualbox/debian/buster/.vagrant/*
 /simple-cdd/images/*
 /simple-cdd/scripts/.vscode/*
-/simple-cdd/scripts/#gep.txt#
+/simple-cdd/*.contents
+/simple-cdd/*.sorted
