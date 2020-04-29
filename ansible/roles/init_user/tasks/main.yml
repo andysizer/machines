@@ -9,5 +9,4 @@
   template: 
     src: sudoers
     dest: /etc/sudoers.d/{{ user }}
-    validate: 'visudo -cf %s'
     mode: 0440
