@@ -1,0 +1,10 @@
+# Add key to agent
+
+- name: copy the passwordless script
+  template: 
+    src: passwordless.sh
+    dest: /tmp/passwordless.sh
+    mode: 0555
+
+- name: execute passwordless script
+  shell: "PATH=/usr/bin /tmp/passwordless.sh"

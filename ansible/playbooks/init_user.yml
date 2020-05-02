@@ -1,0 +1,13 @@
+- name: Ensure user exists and add to sudoers
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars:
+    os: debian
+    distribution: buster
+    user: andy
+    
+  roles:
+    - ensure_user
+    - sudoers
+

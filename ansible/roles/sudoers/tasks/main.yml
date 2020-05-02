@@ -1,9 +1,4 @@
-# Set user
-
-- name: set up user
-  user:
-    name: "{{ user }}"
-    state: present
+# Add user to sudoers
 
 - name: set up /etc/sudoers.d/{{ user }}.sudoers
   template: 

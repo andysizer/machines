@@ -1,6 +1,8 @@
 #!/bin/sh
 
 export ANSIBLE_CONFIG=./ansible.cfg
-PLAYBOOK=../playbooks/debian-buster-dev.yml
+INITUSER=../playbooks/init_user.yml
+PASSWORDLESS=../playbooks/passwordless.yml
 
-ansible-playbook -vvvv --become-method su --ask-su-pass ${PLAYBOOK}
+ansible-playbook --become-method su --ask-su-pass ${INITUSER}
+ansible-playbook ${PASSWORDLESS}
