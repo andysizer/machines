@@ -4,6 +4,7 @@
 *.pyc
 *.iso
 *.log
+.#*
 
 /simple-cdd/scripts/*.txt
 /simple-cdd/tmp/*
@@ -13,3 +14,4 @@
 /simple-cdd/*.contents
 /simple-cdd/*.sorted
 /ansible/scripts/.#ansible.cfg
+
