@@ -3,9 +3,6 @@
   connection: local
   become: yes
   become_user: root
-  vars:
-    os: debian
-    distribution: buster
     
   roles:
     - ensure_user
