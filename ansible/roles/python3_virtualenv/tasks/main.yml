@@ -1,0 +1,19 @@
+# set virtualenvwrapper functionality
+
+- name: ensure virtualenv and virtualenvwrapper are installed
+  apt:
+    pkg:
+    - virtualenv
+    - virtualenvwrapper
+    state: present
+  become: yes
+
+- name: add script to source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh from .bashrc
+  template:
+    src: source_virtualenvwrapper.sh
+    dest: /tmp/source_virtualenvwrapper.sh
+    mode: 0755
+
+- name: execute source_virtualenvwrapper.sh
+  shell: /tmp/source_virtualenvwrapper.sh
+

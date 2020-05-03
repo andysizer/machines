@@ -1,0 +1,6 @@
+- name: Set up virtualenv wrapper defs for python
+  hosts: 127.0.0.1
+  connection: local
+    
+  roles:
+    - python3_virtualenv
