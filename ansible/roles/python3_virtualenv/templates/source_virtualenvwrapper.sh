@@ -1,6 +1,6 @@
 #! /bin/sh
 
-VENVSCRIPT=/usr/share/virtualenv/virtualenvwrapper_lazy.sh
+VENVSCRIPT=/usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 
 COMMENT="# Added by Ansible role 'python3_virtualwrapper'"
 STATEMENT="source ${VENVSCRIPT}"
