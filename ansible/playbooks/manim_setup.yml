@@ -1,0 +1,11 @@
+- name: Set up manim
+  hosts: 127.0.0.1
+  connection: local
+  vars:
+    user: nobody
+    dest: "/home/{{ user }}/Work/Python"
+    venv: manim
+    repo: "git@github.com:3b1b/manim.git"
+    
+  roles:
+    - manim_setup
