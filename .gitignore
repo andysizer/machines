@@ -12,3 +12,4 @@
 /simple-cdd/scripts/.vscode/*
 /simple-cdd/*.contents
 /simple-cdd/*.sorted
+/ansible/scripts/.#ansible.cfg
