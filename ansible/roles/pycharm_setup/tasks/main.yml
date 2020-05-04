@@ -1,0 +1,13 @@
+# set up pycharm
+
+- name: add script to setup pycharm
+  template:
+    src: pycharm_setup.sh
+    dest: /tmp/pycharm_setup.sh
+    mode: 0755
+
+- name: execute pycharm_setup.sh
+  shell:
+    cmd: /tmp/pycharm_setup.sh
+    executable: /usr/bin/bash
+
