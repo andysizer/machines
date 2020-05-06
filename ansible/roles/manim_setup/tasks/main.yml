@@ -16,16 +16,20 @@
   pip:
     name: pypi-libavwrapper
     state: present
-    executable: pip3
 
 - name: Recursively change ownership of a directory
   file:
     path: "{{ dest }}"
     state: directory
     
+- name: check if repo already cloned
+  shell: "/usr/bin/test -d {{ dest }}/manim/.git"
+  register: git_cloned
+
 - git:
     repo: "{{ repo }}"
     dest: "{{ dest }}/manim"
+  when: git_cloned.rc != 0
     
 - name: set up a virtual env using virtualenvwrapper's mkvirtualenv
   shell:
@@ -33,6 +37,12 @@
     chdir: "{{ dest }}"
     creates: "~{{ user }}/.virtualenvs/{{ venv }}"
     executable: /usr/bin/bash
+
+- name: install snakefood3
+  pip:
+    name: snakefood3
+    state: present
+    virtualenv: "~{{ user }}/.virtualenvs/{{ venv }}"
 
 - name: run this as a test for correct installation
   shell:

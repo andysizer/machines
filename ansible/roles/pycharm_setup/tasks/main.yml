@@ -1,5 +1,10 @@
 # set up pycharm
 
+- name: install snakefood3
+  pip:
+    name: snakefood3
+    state: present
+
 - name: add script to setup pycharm
   template:
     src: pycharm_setup.sh
