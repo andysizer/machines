@@ -43,6 +43,6 @@ if ! grep -q "${COMMENT}" ${BASHRC} ; then
     echo ${STATEMENT} >> ${BASHRC}
 fi
 
-touch ${PYCHARMINSTALLEDFLGK}
+touch ${PYCHARMINSTALLEDFLG}
 
 ./pycharm.sh &
