@@ -25,6 +25,7 @@
 - name: check if repo already cloned
   shell: "/usr/bin/test -d {{ dest }}/manim/.git"
   register: git_cloned
+  ignore_errors: yes
 
 - git:
     repo: "{{ repo }}"
@@ -38,11 +39,11 @@
     creates: "~{{ user }}/.virtualenvs/{{ venv }}"
     executable: /usr/bin/bash
 
-- name: install snakefood3
-  pip:
-    name: snakefood3
-    state: present
-    virtualenv: "~{{ user }}/.virtualenvs/{{ venv }}"
+#- name: install snakefood3
+#  pip:
+#    name: snakefood3
+#    state: present
+#    virtualenv: "~{{ user }}/.virtualenvs/{{ venv }}"
 
 - name: run this as a test for correct installation
   shell:
